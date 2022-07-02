@@ -183,6 +183,7 @@
     <service id="App\Controller\IndexController" class="App\Controller\IndexController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="messenger.bus.default"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\IndexController"/>
       </call>

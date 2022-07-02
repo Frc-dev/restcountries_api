@@ -69,6 +69,7 @@ class ComposerStaticInit0fccbaa3cf2d0c3f8870311e8bc06fc1
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Symfony\\Bundle\\MakerBundle\\' => 27,
             'Symfony\\Bundle\\FrameworkBundle\\' => 31,
+            'Symfony\\Bridge\\ProxyManager\\' => 28,
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
         ),
@@ -271,6 +272,10 @@ class ComposerStaticInit0fccbaa3cf2d0c3f8870311e8bc06fc1
         'Symfony\\Bundle\\FrameworkBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/framework-bundle',
+        ),
+        'Symfony\\Bridge\\ProxyManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/proxy-manager-bridge',
         ),
         'Symfony\\Bridge\\PhpUnit\\' => 
         array (
