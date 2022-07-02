@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\CategoryGet;
+namespace App\Application\ReadCountries;
 
 use App\Application\ReadCountries\ReadCountriesResponse;
 use App\Domain\CountryRepository;

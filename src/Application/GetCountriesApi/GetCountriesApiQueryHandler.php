@@ -17,7 +17,7 @@ class GetCountriesApiQueryHandler implements QueryHandler
         $this->getCountriesApi = $getCountriesApi;
     }
 
-    public function __invoke(GetCountriesApiQuery $getCountriesApi): array
+    public function __invoke(GetCountriesApiQuery $getCountriesApiQuery): array
     {
         return $this->getCountriesApi->__invoke();
     }
