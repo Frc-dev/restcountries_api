@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App;
 
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
 class ApiRequest
 {
     private HttpClientInterface $client;

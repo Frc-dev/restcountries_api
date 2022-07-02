@@ -95,6 +95,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/exporter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/messenger" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-class DoctrineSearchRepository extends DoctrineRepository implements CountryRepository
+use App\Domain\CountryRepository;
+use App\Entity\Country;
+
+class DoctrineCountryRepository extends DoctrineRepository implements CountryRepository
 {
     public function save(array $countryList): void
     {
@@ -13,7 +16,7 @@ class DoctrineSearchRepository extends DoctrineRepository implements CountryRepo
         $em = $this->entityManager;
         $i = 0;
         foreach ($countryList as $country) {
-            $em->persist($search);
+            $em->persist($country);
             if (($i % $batchSize) === 0) {
                 $em->flush();
                 $em->clear();
@@ -27,7 +30,7 @@ class DoctrineSearchRepository extends DoctrineRepository implements CountryRepo
 
     public function readAllCountries(): array
     {
-        
+        return $this->repository(Country::class)->findAll();
     }
 
     public function insertCountry(): void
@@ -40,7 +43,7 @@ class DoctrineSearchRepository extends DoctrineRepository implements CountryRepo
 
     }
 
-    public function updateCountryDataWithApi(): void
+    public function updateCountryDataWithApi($apiData): void
     {
 
     }

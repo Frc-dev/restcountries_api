@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'f5eec1112653ab6b1d659071791b1ac59a5545ec',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'f5eec1112653ab6b1d659071791b1ac59a5545ec',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -244,6 +244,18 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
         'phpdocumentor/reflection-common' => array(
             'pretty_version' => '2.2.0',
             'version' => '2.2.0.0',
@@ -374,6 +386,12 @@
             'dev_requirement' => false,
         ),
         'psr/event-dispatcher-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
@@ -718,6 +736,30 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/http-client' => array(
+            'pretty_version' => 'v6.0.9',
+            'version' => '6.0.9.0',
+            'reference' => '3c6fc53a3deed2d3c1825d41ad8b3f23a6b038b5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-contracts' => array(
+            'pretty_version' => 'v3.0.2',
+            'version' => '3.0.2.0',
+            'reference' => '4184b9b63af1edaf35b6a7974c6f1f9f33294129',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client-contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '3.0',
+            ),
+        ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.0.10',
             'version' => '6.0.10.0',
@@ -744,6 +786,15 @@
             'install_path' => __DIR__ . '/../symfony/maker-bundle',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'symfony/messenger' => array(
+            'pretty_version' => 'v6.0.10',
+            'version' => '6.0.10.0',
+            'reference' => '59a1a1eb3049129824d0592e6b4dcb5173e8279d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/messenger',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/phpunit-bridge' => array(
             'pretty_version' => 'v6.1.2',
@@ -850,6 +901,15 @@
             'reference' => '841d3f303349b2f4fbc25c3bd6349a901fb8e0dc',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../symfony/runtime',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/serializer' => array(
+            'pretty_version' => 'v6.0.10',
+            'version' => '6.0.10.0',
+            'reference' => 'd01114d1e6321070f11bffc6d0d4a698d1403867',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/serializer',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
