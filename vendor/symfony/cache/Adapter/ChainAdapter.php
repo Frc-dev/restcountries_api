@@ -66,10 +66,11 @@ class ChainAdapter implements AdapterInterface, CacheInterface, PruneableInterfa
         $this->adapterCount = \count($this->adapters);
         $this->defaultLifetime = $defaultLifetime;
 
-        self::$syncItem ??= \Closure::bind(
+        self::$syncItem ?? self::$syncItem = \Closure::bind(
             static function ($sourceItem, $item, $defaultLifetime, $sourceMetadata = null) {
                 $sourceItem->isTaggable = false;
-                $sourceMetadata ??= $sourceItem->metadata;
+                $sourceMetadata = $sourceMetadata ?? $sourceItem->metadata;
+                unset($sourceMetadata[CacheItem::METADATA_TAGS]);
 
                 $item->value = $sourceItem->value;
                 $item->isHit = $sourceItem->isHit;
@@ -93,9 +94,17 @@ class ChainAdapter implements AdapterInterface, CacheInterface, PruneableInterfa
      */
     public function get(string $key, callable $callback, float $beta = null, array &$metadata = null): mixed
     {
+        $doSave = true;
+        $callback = static function (CacheItem $item, bool &$save) use ($callback, &$doSave) {
+            $value = $callback($item, $save);
+            $doSave = $save;
+
+            return $value;
+        };
+
         $lastItem = null;
         $i = 0;
-        $wrap = function (CacheItem $item = null) use ($key, $callback, $beta, &$wrap, &$i, &$lastItem, &$metadata) {
+        $wrap = function (CacheItem $item = null, bool &$save = true) use ($key, $callback, $beta, &$wrap, &$i, &$doSave, &$lastItem, &$metadata) {
             $adapter = $this->adapters[$i];
             if (isset($this->adapters[++$i])) {
                 $callback = $wrap;
@@ -107,8 +116,9 @@ class ChainAdapter implements AdapterInterface, CacheInterface, PruneableInterfa
                 $value = $this->doGet($adapter, $key, $callback, $beta, $metadata);
             }
             if (null !== $item) {
-                (self::$syncItem)($lastItem ??= $item, $item, $this->defaultLifetime, $metadata);
+                (self::$syncItem)($lastItem = $lastItem ?? $item, $item, $this->defaultLifetime, $metadata);
             }
+            $save = $doSave;
 
             return $value;
         };

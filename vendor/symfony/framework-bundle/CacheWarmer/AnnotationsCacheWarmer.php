@@ -25,7 +25,7 @@ use Symfony\Component\Cache\Adapter\PhpArrayAdapter;
  */
 class AnnotationsCacheWarmer extends AbstractPhpFileCacheWarmer
 {
-    private Reader $annotationReader;
+    private $annotationReader;
     private ?string $excludeRegexp;
     private bool $debug;
 
@@ -85,7 +85,7 @@ class AnnotationsCacheWarmer extends AbstractPhpFileCacheWarmer
 
         try {
             $reader->getClassAnnotations($reflectionClass);
-        } catch (AnnotationException) {
+        } catch (AnnotationException $e) {
             /*
              * Ignore any AnnotationException to not break the cache warming process if an Annotation is badly
              * configured or could not be found / read / etc.
@@ -99,14 +99,14 @@ class AnnotationsCacheWarmer extends AbstractPhpFileCacheWarmer
         foreach ($reflectionClass->getMethods() as $reflectionMethod) {
             try {
                 $reader->getMethodAnnotations($reflectionMethod);
-            } catch (AnnotationException) {
+            } catch (AnnotationException $e) {
             }
         }
 
         foreach ($reflectionClass->getProperties() as $reflectionProperty) {
             try {
                 $reader->getPropertyAnnotations($reflectionProperty);
-            } catch (AnnotationException) {
+            } catch (AnnotationException $e) {
             }
         }
     }

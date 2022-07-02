@@ -84,7 +84,7 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
         $projectDir = $fs->makePathRelative($projectDir, $vendorDir);
         $nestingLevel = 0;
 
-        while (str_starts_with($projectDir, '../')) {
+        while (0 === strpos($projectDir, '../')) {
             ++$nestingLevel;
             $projectDir = substr($projectDir, 3);
         }

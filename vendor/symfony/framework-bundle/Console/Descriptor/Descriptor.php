@@ -303,7 +303,7 @@ abstract class Descriptor implements DescriptorInterface
 
                 return trim(preg_replace('#\s*\n\s*\*\s*#', ' ', $docComment));
             }
-        } catch (\ReflectionException) {
+        } catch (\ReflectionException $e) {
         }
 
         return '';
@@ -330,6 +330,7 @@ abstract class Descriptor implements DescriptorInterface
         $getDefaultParameter = $getDefaultParameter->bindTo($bag, \get_class($bag));
 
         $getEnvReflection = new \ReflectionMethod($container, 'getEnv');
+        $getEnvReflection->setAccessible(true);
 
         $envs = [];
 

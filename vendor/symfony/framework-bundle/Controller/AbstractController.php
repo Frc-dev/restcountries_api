@@ -42,7 +42,6 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\WebLink\EventListener\AddLinkHeaderListener;
 use Symfony\Component\WebLink\GenericLinkProvider;
-use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Twig\Environment;
 
@@ -61,7 +60,6 @@ abstract class AbstractController implements ServiceSubscriberInterface
     /**
      * @required
      */
-    #[Required]
     public function setContainer(ContainerInterface $container): ?ContainerInterface
     {
         $previous = $this->container;

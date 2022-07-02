@@ -51,7 +51,7 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
 
         try {
             $this->loadKeys();
-        } catch (\RuntimeException) {
+        } catch (\RuntimeException $e) {
             // ignore failures to load keys
         }
 
