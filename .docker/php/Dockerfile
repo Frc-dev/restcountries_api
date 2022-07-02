@@ -34,3 +34,8 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www/symfony
+
+FROM php:8.0-fpm
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
