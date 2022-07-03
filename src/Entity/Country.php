@@ -43,6 +43,7 @@ class Country
         $this->population = $population;
     }
 
+    //this is the only place where we must know details about the API, keeping coupling to a minimum
     public static function fromApi(
         array $countryApiData,
         string $countryId
@@ -50,11 +51,14 @@ class Country
     {
         return new self(
             $countryId,
-            $countryApiData['flag']['svg'],
+            $countryApiData['flag'],
             $countryApiData['name']['common'],
             $countryApiData['cca2'],
-            $countryApiData['capital'],
-            $countryApiData['population']
+            //some countries are not sovereign and might not have a capital city
+            empty($countryApiData['capital'][0])? "No capital" : $countryApiData['capital'][0],
+            /*strings are cheaper than integers for storing purposes, converting the int as soon as possible
+              lets us work with this string in the entire app*/
+            (string)$countryApiData['population']
         );
     }
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>{{'Countries of the World' | trans}}</title>
         <meta name="description" content="A simple HTML5 Template for new projects.">
-        <meta name="author" content="ass">
+        <meta name="author" content="Francis Rodriguez (frc-dev) for Auren technical interview">
         <link href="{{ asset('styles/main.css') }}" rel="stylesheet"/>
     </head>
     <body>
@@ -12,7 +12,7 @@
             <div id="title">{{'Countries of the World' | trans}}</div>
         </div>
 
-        {% if countryList is not empty %}{{ dump(countryList) }}
+        {% if countryList is not empty %}
             <table id="countryTable">
                 <tr>
                     <th>Flag</th>
@@ -21,8 +21,9 @@
                     <th>Capital</th>
                     <th>Population</th>
                 </tr>
+                {{ dump(countryList) }}
                 {% for country in countryList %}
-                    <tr class="row-" ~ country.id>
+                    <tr class={{ "row-" ~ country.id }}>
                         <th>{{ country.flag }}</th>
                         <th>{{ country.name }}</th>
                         <th>{{ country.countryCode }}</th>

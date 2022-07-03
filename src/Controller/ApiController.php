@@ -14,6 +14,9 @@ use Symfony\Component\Messenger\MessageBusInterface;
 abstract class ApiController extends AbstractController
 {
 
+    protected MessageBusInterface $queryBus;
+    protected ApiResponse $apiResponse;
+
     public function __construct
     (
         MessageBusInterface $queryBus,

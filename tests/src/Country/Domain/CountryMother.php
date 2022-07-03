@@ -33,10 +33,10 @@ class CountryMother
         return self::create(
             $countryId,
             $results['flag'],
-            $results['name'],
-            $results['countryCode'],
-            $results['capital'],
-            $results['population'],
+            $results['name']['common'],
+            $results['cca2'],
+            $results['capital'][0],
+            (string)$results['population'],
         );
     }
 
@@ -44,7 +44,7 @@ class CountryMother
     {
         return self::create(
             Uuid::uuid4()->toString(),
-            'flag.svg',
+            'ES',
             'España',
             'ES',
             'Madrid',

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Application\GetCountriesApi;
+namespace App\Application\GetCountryApi;
 
 use App\ApiRequest;
 use App\Domain\CountryApiMapper;
 
-class GetCountriesApi
+class GetCountryApi
 {
     private ApiRequest $request;
     private CountryApiMapper $mapper;
