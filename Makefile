@@ -1,3 +1,3 @@
 start:
-	@cd .docker/; \
-		docker-sync-stack start
+	@docker-compose up -d
+	@symfony serve -d

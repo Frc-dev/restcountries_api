@@ -10,7 +10,6 @@ use Symfony\Component\HttpClient\NativeHttpClient;
 
 class ApiRequestTest extends WebTestCase
 {
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,10 +19,11 @@ class ApiRequestTest extends WebTestCase
     }
 
     /** @test */
-    public function shouldTestCall()
+    public function shouldTestCall(): void
     {
         $client = $this->apiRequest;
         $results = $client->readCountriesApiCall();
-        return $results;
+
+        $this->assertIsArray($results);
     }
 }
