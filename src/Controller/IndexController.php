@@ -21,9 +21,8 @@ class IndexController extends ApiController
     #[Route('/{_locale<en|es>}/', name: 'homepage')]
     public function index(): Response
     {
-        $countryListApiResponse = $this->queryBus->dispatch(new GetCountryApiQuery());
-        $countryListResponse = $this->apiResponse->handleResponse($countryListApiResponse);
-        dd(json_decode($countryListResponse.content[0]);
+        $countryList = $this->queryBus->dispatch(new ReadCountriesQuery());
+        $countryListResponse = $this->apiResponse->handleResponse($countryList);
         //$countryList = $this->queryBus->dispatch(new ReadCountriesQuery());
         return $this->render('views/index.html.twig', ['countryList' => $countryListResponse]);
     }
