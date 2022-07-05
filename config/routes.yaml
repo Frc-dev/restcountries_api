@@ -2,3 +2,22 @@ index:
     path: /
     controller: App\Controller\IndexController::index
 
+create:
+    path: /create
+    controller: App\Controller\CountryController::create
+
+update_api:
+    path: /update/api
+    controller: App\Controller\CountryController::updateApi
+
+update:
+    path: /update
+    controller: App\Controller\CountryController::update
+
+delete:
+    path: /delete
+    controller: App\Controller\CountryController::delete
+
+deleteAll:
+    path: /delete/all
+    controller: App\Controller\CountryController::deleteAll

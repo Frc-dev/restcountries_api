@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\DeleteAllCountries;
+namespace App\Application\DeleteCountry;
 
 use App\Domain\Bus\Command\CommandHandler;
 
@@ -19,6 +19,6 @@ class DeleteCountryCommandHandler implements CommandHandler
 
     public function __invoke(DeleteCountryCommand $deleteCountryCommand): void
     {
-        $this->deleteCountry->__invoke();
+        $this->deleteCountry->__invoke($deleteCountryCommand->getCountryId());
     }
 }

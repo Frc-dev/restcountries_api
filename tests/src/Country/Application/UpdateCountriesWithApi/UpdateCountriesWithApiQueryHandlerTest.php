@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Tests\src\Country\Application\GetCountryApi;
+namespace App\Tests\src\Country\Application\UpdateCountriesWithApi;
 
-use App\Application\GetCountryApi\GetCountryApi;
-use App\Application\GetCountryApi\GetCountryApiQueryHandler;
+use App\Application\UpdateCountriesWithApi\UpdateCountriesWithApi;
+use App\Application\UpdateCountriesWithApi\UpdateCountriesWithApiQueryHandler;
 use App\Tests\src\Country\Domain\CountryMother;
 use App\Tests\src\Country\Domain\CountryUnitTestCase;
 use App\Tests\src\Country\Domain\GetCountryApiQueryMother;
 
-class GetCountryApiQueryHandlerTest extends CountryUnitTestCase
+class UpdateCountriesWithApiQueryHandlerTest extends CountryUnitTestCase
 {
     protected function setUp(): void
     {
         parent::setUp();
-        $this->handler = new GetCountryApiQueryHandler(
-            new GetCountryApi(
+        $this->handler = new UpdateCountriesWithApiQueryHandler(
+            new UpdateCountriesWithApi(
                 $this->apiRequest(),
+                $this->repository(),
                 $this->searchResultMapper()
             )
         );

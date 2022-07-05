@@ -33,23 +33,39 @@ class DoctrineCountryRepository extends DoctrineRepository implements CountryRep
         return $this->repository(Country::class)->findAll();
     }
 
-    public function insertCountry(): void
+    public function insertCountry(Country $country): void
     {
-
+        $em = $this->entityManager;
+        $em->persist($country);
+        $em->flush();
     }
 
-    public function updateCountryData(): void
+    public function updateCountryData(Country $country): void
     {
+        $em = $this->entityManager;
+        $oldCountry = $em->getRepository(Country::class)->find($country->getId());
 
+        $this->deleteCountry($oldCountry);
+        $this->insertCountry($country);
     }
 
-    public function updateCountryDataWithApi($apiData): void
+    public function deleteCountry(string $countryId): void
     {
-
+        $em = $this->entityManager;
+        $country = $em->getRepository(Country::class)->find($countryId);
+        $em->remove($country);
+        $em->flush();
     }
 
-    public function deleteCountry(): void
+    public function updateCountriesApiData(array $countryList): void
     {
+        $this->deleteAllCountries();
+        $this->save($countryList);
+    }
 
+    public function deleteAllCountries(): void
+    {
+        $em = $this->entityManager;
+        $em->createQuery('DELETE FROM App\Entity\Country c')->execute();
     }
 }

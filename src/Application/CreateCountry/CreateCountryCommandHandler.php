@@ -17,8 +17,13 @@ class CreateCountryCommandHandler implements CommandHandler
         $this->createCountry = $createCountry;
     }
 
-    public function __invoke(CreateCountryQuery $createCountryQuery): void
+    public function __invoke(CreateCountryCommand $createCountryCommand): void
     {
-        $this->createCountry->__invoke();
+        $name = $createCountryCommand->getName();
+        $countryCode = $createCountryCommand->getCountryCode();
+        $capital = $createCountryCommand->getCapital();
+        $population = $createCountryCommand->getPopulation();
+
+        $this->createCountry->__invoke($name, $countryCode, $capital, $population);
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Application\GetCountryApi\GetCountryApiQuery;
+use App\Application\UpdateCountriesWithApi\UpdateCountriesWithApiQuery;
 use App\Application\ReadCountries\ReadCountriesQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +23,6 @@ class IndexController extends ApiController
     {
         $countryList = $this->queryBus->dispatch(new ReadCountriesQuery());
         $countryListResponse = $this->apiResponse->handleResponse($countryList);
-        //$countryList = $this->queryBus->dispatch(new ReadCountriesQuery());
         return $this->render('views/index.html.twig', ['countryList' => $countryListResponse]);
     }
 }

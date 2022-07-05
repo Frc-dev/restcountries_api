@@ -18,7 +18,7 @@ class ReadCountriesQueryHandler implements QueryHandler
         $this->readCountries = $readCountries;
     }
 
-    public function __invoke(ReadCountriesQuery $readCountriesQuery): array
+    public function __invoke(ReadCountriesQuery $readCountriesQuery): ReadCountriesResponse
     {
         return $this->readCountries->__invoke();
     }

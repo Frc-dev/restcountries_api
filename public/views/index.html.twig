@@ -2,29 +2,29 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{{'Countries of the World' | trans}}</title>
+        <title>Countries of the World</title>
         <meta name="description" content="A simple HTML5 Template for new projects.">
         <meta name="author" content="Francis Rodriguez (frc-dev) for Auren technical interview">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="{{ asset('styles/main.css') }}" rel="stylesheet"/>
     </head>
     <body>
         <div id="topnav">
-            <div id="title">{{'Countries of the World' | trans}}</div>
+            <div id="title">Countries of the World</div>
         </div>
-
+        <button type="button" class="btn btn-success" id="insertButton">Insert country</button>
+        <button type="button" class="btn btn-primary" id="updateApiButton">Update data with API</button>
         {% if countryList is not empty %}
-            <table id="countryTable">
+            <button type="button" class="btn btn-danger" id="clearTableButton">Delete all records</button>
+            <table id="countryTable" class="table">
                 <tr>
-                    <th>Flag</th>
-                    <th>Name</th>
-                    <th>Country code</th>
-                    <th>Capital</th>
-                    <th>Population</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Country code</th>
+                    <th scope="col">Capital</th>
+                    <th scope="col">Population</th>
                 </tr>
-                {{ dump(countryList) }}
                 {% for country in countryList %}
                     <tr class={{ "row-" ~ country.id }}>
-                        <th>{{ country.flag }}</th>
                         <th>{{ country.name }}</th>
                         <th>{{ country.countryCode }}</th>
                         <th>{{ country.capital }}</th>
@@ -39,6 +39,34 @@
                 {% endfor %}
             </table> 
         {% endif %}
+
+        <div class="insertModal hide" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Insert country</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="insertName">Name:</label>
+                        <input type="text" id="insertName" name="name"><br><br>
+                        <label for="insertCountryCode">Country code:</label>
+                        <input type="text" id="insertCountryCode" name="countrycode"><br><br>
+                        <label for="insertCapital">Capital:</label>
+                        <input type="text" id="insertCapital" name="capital"><br><br>
+                        <label for="insertPopulation">Population:</label>
+                        <input type="text" id="insertPopulation" name="population"><br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="insertSave">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="{{ asset('scripts/main.js') }}"></script>
     </body>

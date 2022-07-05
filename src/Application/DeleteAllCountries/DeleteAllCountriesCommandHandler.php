@@ -14,11 +14,11 @@ class DeleteAllCountriesCommandHandler implements CommandHandler
         DeleteAllCountries $deleteAllCountries
     )
     {
-        $this->createCountry = $createCountry;
+        $this->deleteAllCountries = $deleteAllCountries;
     }
 
-    public function __invoke(CreateCountryQuery $createCountryQuery): void
+    public function __invoke(DeleteAllCountriesCommand $deleteAllCountriesCommand): void
     {
-        $this->createCountry->__invoke();
+        $this->deleteAllCountries->__invoke();
     }
 }

@@ -15,8 +15,6 @@ class Country
     /** @ORM\Id @ORM\Column(type="string", name="id") */
     private string $id;
     /** @ORM\Column(type="string") */
-    private string $flag;
-    /** @ORM\Column(type="string") */
     private string $name;
     /** @ORM\Column(type="string") */
     private string $countryCode;
@@ -28,7 +26,6 @@ class Country
     public function __construct
     (
         $id,
-        $flag,
         $name,
         $countryCode,
         $capital,
@@ -36,7 +33,6 @@ class Country
     )
     {
         $this->id = $id;
-        $this->flag = $flag;
         $this->name = $name;
         $this->countryCode = $countryCode;
         $this->capital = $capital;
@@ -51,7 +47,6 @@ class Country
     {
         return new self(
             $countryId,
-            $countryApiData['flag'],
             $countryApiData['name']['common'],
             $countryApiData['cca2'],
             //some countries are not sovereign and might not have a capital city
@@ -68,14 +63,6 @@ class Country
     public function getId(): string
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFlag(): string
-    {
-        return $this->flag;
     }
 
     /**

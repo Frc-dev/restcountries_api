@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Application\GetCountryApi;
+namespace App\Application\DeleteCountry;
 
-class CreateCountry
+use App\Domain\CountryRepository;
+use App\Entity\Country;
+
+class DeleteCountry
 {
     private CountryRepository $repository;
 
@@ -15,8 +18,8 @@ class CreateCountry
         $this->repository = $repository;
     }
 
-    public function __invoke(): void
+    public function __invoke(string $countryId): void
     {
-        $deleteCountry = $this->repository->deleteCountry();
+        $this->repository->deleteCountry($countryId);
     }
 }

@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Application\GetCountryApi;
+namespace App\Application\CreateCountry;
+
+use App\Domain\CountryRepository;
+use App\Entity\Country;
+use Ramsey\Uuid\Uuid;
 
 class CreateCountry
 {
@@ -15,8 +19,16 @@ class CreateCountry
         $this->repository = $repository;
     }
 
-    public function __invoke(): void
+    public function __invoke(string $name, string $countryCode, string $capital, string $population): void
     {
-        $countryList = $this->repository->createCountry();
+        $country = new Country(
+            Uuid::uuid4()->toString(),
+            $name,
+            $countryCode,
+            $capital,
+            $population
+        );
+
+        $this->repository->insertCountry($country);
     }
 }

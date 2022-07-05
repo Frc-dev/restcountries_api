@@ -11,7 +11,6 @@ class CountryMother
 {
     public static function create(
         string $id,
-        string $flag,
         string $name,
         string $countryCode,
         string $capital,
@@ -20,7 +19,6 @@ class CountryMother
     {
         return new Country(
             $id,
-            $flag,
             $name,
             $countryCode,
             $capital,
@@ -32,7 +30,6 @@ class CountryMother
     {
         return self::create(
             $countryId,
-            $results['flag'],
             $results['name']['common'],
             $results['cca2'],
             $results['capital'][0],
@@ -44,7 +41,6 @@ class CountryMother
     {
         return self::create(
             Uuid::uuid4()->toString(),
-            'ES',
             'España',
             'ES',
             'Madrid',
