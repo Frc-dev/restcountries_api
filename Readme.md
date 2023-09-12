@@ -5,3 +5,5 @@ Instructions to build this app:
 3- make migrate
 
 Technical interview app
+
+Check entrypoints in routes.yaml
